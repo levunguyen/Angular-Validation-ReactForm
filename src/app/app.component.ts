@@ -14,16 +14,16 @@ export class AppComponent {
     {id: 3, name: 'USA'},
   ];
   contactForm = new FormGroup({
-    firstname: new FormControl(),
-    lastname: new FormControl(),
-    email: new FormControl(),
-    gender: new FormControl(),
-    isMarried: new FormControl(),
-    country: new FormControl(),
+    firstname: new FormControl('', [Validators.required, Validators.minLength(10)]),
+    lastname: new FormControl('', [Validators.maxLength(15)]),
+    email: new FormControl('', [Validators.required]),
+    gender: new FormControl('', [Validators.required]),
+    isMarried: new FormControl('', [Validators.required]),
+    country: new FormControl('', [Validators.required]),
     address: new FormGroup({
-      city: new FormControl(),
-      street: new FormControl(),
-      pincode: new FormControl()
+      city: new FormControl('', [Validators.required]),
+      street: new FormControl('',[Validators.required]),
+      pincode: new FormControl('', [Validators.required])
     })
   });
   get firstname(){

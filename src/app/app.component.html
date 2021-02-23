@@ -4,6 +4,20 @@
     <label for="firstname">First Name </label>
     <input type="text" id="firstname" name="firstname" formControlName="firstname">
   </p>
+  <!--  <div *ngIf="!contactForm.controls.firstname?.valid && (contactForm.controls.firstname?.dirty || contactForm.controls.firstname?.touched)">-->
+  <!--    <p style="color: red">First Name is not valid</p>-->
+  <!--  </div>-->
+<!--  <div *ngIf="!firstname.valid && (firstname.dirty || firstname.touched)">-->
+<!--    <p style="color: red">First Name is not valid</p>-->
+<!--  </div>-->
+  <div *ngIf="!firstname.valid && (firstname.dirty || firstname.touched)">
+    <div [hidden]="!firstname.errors.required">
+          <p style="color: red">First Name is required</p>
+    </div>
+    <div [hidden]="!firstname.errors.minlength">
+      <p style="color: red">First Name min length 10</p>
+    </div>
+  </div>
   <p>
     <label for="lastname">Last Name </label>
     <input type="text" id="lastname" name="lastname" formControlName="lastname">
@@ -50,7 +64,7 @@
     </div>
   </div>
   <p>
-    <button type="submit">Submit</button>
+    <button type="submit" [disabled]="!contactForm.valid">Submit</button>
   </p>
 
 </form>
